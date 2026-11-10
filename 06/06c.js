@@ -129,21 +129,21 @@ app.get('getuser', function (request, response) {
     const items = request.url.split('/');
     const userId = items[2];
 
-    readFile('db.json', function (error, fileData) {
-        if (error) {
-            console.error('error reading db.json', error);
+    readFile('db.json', function (readErr, fileData) {
+        if (readErr) {
             response.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
-            return response.end('error reading db.json');
+            return response.end('read error');
         }
 
-        let users = [];
+        let parsed;
         try {
-            const parsed = JSON.parse(fileData);
-            users = Array.isArray(parsed) ? parsed : (parsed.users || []);
+            parsed = JSON.parse(fileData);
         } catch {
-            users = [];
+            response.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+            return response.end('invalid json');
         }
 
+        const users = Array.isArray(parsed) ? parsed : (parsed.users || []);
         const user = users.find(x => String(x.id) === userId);
 
         if (user) {

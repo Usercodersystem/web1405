@@ -123,9 +123,6 @@ app.get('signup', function (req, res) {
     });
 });
 
-
-
-// ====================== GET USER ======================
 app.get('getuser', function (request, response) {
     const items = request.url.split('/');
     const userId = items[2];
@@ -156,9 +153,6 @@ app.get('getuser', function (request, response) {
         }
     });
 });
-
-
-// ====================== DELETE USER ======================
 
 
 app.get('deleteuser', function (request, response) {
