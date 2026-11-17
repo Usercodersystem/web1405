@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "name": "xxxxxxxxxxx",
+            "email": "nasser@x.com",
+            "pass": "456",
+            "id": "10835532",
+            "type": "user"
+        },
+        {
+            "name": "ali",
+            "email": "ali@x.com",
+            "pass": "123",
+            "id": "10988295",
+            "type": "admin"
+        }
+    ]
+}
